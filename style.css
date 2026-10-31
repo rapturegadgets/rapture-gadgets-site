@@ -63,7 +63,9 @@
 /* ---------- 2. RESET & BASE ---------- */
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 
-html{ scroll-behavior:smooth; scroll-padding-top:120px; -webkit-text-size-adjust:100%; overflow-x:hidden; }
+/* overflow-x:clip (not hidden) - 'hidden' creates a scroll container which
+   silently breaks position:sticky on the header below */
+html{ scroll-behavior:smooth; scroll-padding-top:120px; -webkit-text-size-adjust:100%; overflow-x:clip; }
 
 body{
   font-family:var(--font-b);
@@ -71,7 +73,7 @@ body{
   color:var(--text);
   line-height:1.65;
   font-size:16.5px;
-  overflow-x:hidden;
+  overflow-x:clip;
   /* soft aurora wash behind everything */
   background-image:
     radial-gradient(900px 520px at 82% -8%,  rgba(124,107,255,.20), transparent 62%),
